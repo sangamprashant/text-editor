@@ -1,0 +1,51 @@
+.word-list {
+  padding: 20%;
+}
+
+.word-list li {
+  margin: 10px;
+  padding: 10px;
+  background-color: rgb(240, 240, 240);
+  font-size: 20px;
+}
+
+.main-container {
+  display: grid;
+  height: 100vh;
+  overflow: hidden;
+  grid-template-columns: 3fr 1fr;
+}
+
+.writer-container {
+  margin: 20px 0 20px 20px;
+}
+
+.quill-editor {
+  height: calc(100vh - 40px);
+}
+
+.word-frequency-container {
+  flex: 1;
+  margin: 20px;
+  padding: 20px;
+  overflow-y: auto;
+  border: 1px solid #ccc;
+}
+
+.word-list {
+  list-style: none;
+  padding: 0;
+}
+
+.word-list li {
+  margin-bottom: 8px;
+}
+
+.word {
+  font-weight: bold;
+}
+
+.count {
+  margin-left: 5px;
+  color: #888;
+}
