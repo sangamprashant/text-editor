@@ -1,3 +1,7 @@
+* {
+  margin: 0;
+  padding: 0;
+}
 .toolbar {
   display: flex;
   gap: 10px;
@@ -11,7 +15,8 @@
 
 .custom-editor {
   min-height: 200px;
-  height: calc(100vh - 200px);
+  height: 100%;
+  /* height: calc(100vh - 200px); */
   outline: none;
   direction: ltr;
   text-align: left;
@@ -22,6 +27,12 @@
 .tiptap {
   min-height: 200px;
   height: 100%;
+  /* height: calc(100vh - 200px); */
+  overflow-y: auto;
+}
+
+.ProseMirror-focused {
+  border: none !important;
 }
 
 .button-input-group {
@@ -30,11 +41,6 @@
   padding: 5px;
   border: 1px solid gray;
   border-radius: 5px;
-}
-
-* {
-  margin: 0;
-  padding: 0;
 }
 
 button,
@@ -63,6 +69,10 @@ input[type="color"] {
   padding: 10px;
   border: 1px solid gray;
   border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: calc(100vh - 20px);
 }
 
 .toolbar {
@@ -113,4 +123,31 @@ input[type="color"] {
 
 .code-class {
   background-color: rgb(177, 233, 235);
+}
+
+.ProseMirror {
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+
+  th,
+  td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  tr:hover {
+    background-color: #dddddd;
+  }
 }
