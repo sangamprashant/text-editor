@@ -1,35 +1,81 @@
-.word-list {
-  padding: 20%;
+
+
+.toolbar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
 }
 
-.word-list li {
-  margin: 10px;
-  padding: 10px;
-  background-color: rgb(240, 240, 240);
-  font-size: 20px;
+.toolbar button {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.custom-editor {
+  min-height: 200px;
+  height: calc(100vh - 200px);
+  outline: none;
+  direction: ltr;
+  text-align: left;
+  background-color: rgb(244, 244, 244);
+}
+
+.tiptap {
+  min-height: 200px;
+  height: 100%;
+}
+
+.button-input-group {
+  background-color: antiquewhite;
+  max-width: max-content;
+  padding: 5px;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+button, select {
+  padding: 5px;
+  margin: 2px;
+  border-radius: 5px;
+  border: 1px solid gray;
+}
+
+.is-active {
+  background-color: cadetblue;
+}
+
+input[type="color"] {
+  width: 30px;
 }
 
 .main-container {
   display: grid;
-  height: 100vh;
-  overflow: hidden;
   grid-template-columns: 3fr 1fr;
 }
 
-.writer-container {
-  margin: 20px 0 20px 20px;
+.editor-container {
+  padding: 20px;
 }
 
-.quill-editor {
-  height: calc(100vh - 40px);
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.button-input-group {
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
 .word-frequency-container {
-  flex: 1;
-  margin: 20px;
   padding: 20px;
-  overflow-y: auto;
-  border: 1px solid #ccc;
 }
 
 .word-list {
@@ -38,14 +84,28 @@
 }
 
 .word-list li {
-  margin-bottom: 8px;
+  margin-bottom: 5px;
 }
 
-.word {
+.word-list .index {
   font-weight: bold;
 }
 
-.count {
-  margin-left: 5px;
-  color: #888;
+.word-list .word {
+  font-style: italic;
+}
+
+.word-list .count {
+  color: gray;
+}
+
+
+/* editor class */
+
+.block-quote{
+  margin-right: 30px !important;
+}
+
+.code-class{
+  background-color: rgb(177, 233, 235);
 }
