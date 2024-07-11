@@ -1,3 +1,5 @@
+import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
+import CodeIcon from "@mui/icons-material/Code";
 import FormatBoldIcon from "@mui/icons-material/FormatBold";
 import FormatColorFillIcon from "@mui/icons-material/FormatColorFill";
 import FormatColorTextOutlinedIcon from "@mui/icons-material/FormatColorTextOutlined";
@@ -5,15 +7,21 @@ import FormatItalicIcon from "@mui/icons-material/FormatItalic";
 import FormatListBulletedIcon from "@mui/icons-material/FormatListBulleted";
 import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
 import FormatUnderlinedIcon from "@mui/icons-material/FormatUnderlined";
+import HorizontalRuleIcon from "@mui/icons-material/HorizontalRule";
 import RedoIcon from "@mui/icons-material/Redo";
 import StrikethroughSIcon from "@mui/icons-material/StrikethroughS";
+import SubdirectoryArrowLeftIcon from "@mui/icons-material/SubdirectoryArrowLeft";
 import UndoIcon from "@mui/icons-material/Undo";
 import BulletList from "@tiptap/extension-bullet-list";
+import Code from "@tiptap/extension-code";
 import Color from "@tiptap/extension-color";
 import Dropcursor from "@tiptap/extension-dropcursor";
 import Focus from "@tiptap/extension-focus";
 import FontFamily from "@tiptap/extension-font-family";
+import HardBreak from "@tiptap/extension-hard-break";
 import Highlight from "@tiptap/extension-highlight";
+import HorizontalRule from "@tiptap/extension-horizontal-rule";
+import Image from "@tiptap/extension-image";
 import ListItem from "@tiptap/extension-list-item";
 import ListKeymap from "@tiptap/extension-list-keymap";
 import Placeholder from "@tiptap/extension-placeholder";
@@ -25,15 +33,7 @@ import StarterKit from "@tiptap/starter-kit";
 import React, { useCallback, useEffect, useState } from "react";
 import "./Editor.css";
 import CustomCommands from "./EditorModels";
-import Blockquote from "@tiptap/extension-blockquote";
-import SubdirectoryArrowLeftIcon from "@mui/icons-material/SubdirectoryArrowLeft";
-import HardBreak from "@tiptap/extension-hard-break";
-import HorizontalRule from "@tiptap/extension-horizontal-rule";
-import HorizontalRuleIcon from "@mui/icons-material/HorizontalRule";
-import Image from "@tiptap/extension-image";
-import AddPhotoAlternateIcon from "@mui/icons-material/AddPhotoAlternate";
-import Code from "@tiptap/extension-code";
-import CodeIcon from "@mui/icons-material/Code";
+import TextSize from "./TextSize";
 
 const Editor = () => {
   const [plainTextContent, setPlainTextContent] = useState("");
@@ -48,6 +48,7 @@ const Editor = () => {
         types: ["heading", "paragraph"],
       }),
       CustomCommands,
+      TextSize,
       FontFamily.configure({
         types: ["textStyle"],
       }),
@@ -165,145 +166,146 @@ const Editor = () => {
 
   return (
     <div className="main-container">
-      {editor && (
-        <div className="editor-container">
-          <div className="toolbar">
-            <div className="button-input-group">
-              <FormatColorTextOutlinedIcon style={{ color: textColor }} />
-              <input
-                type="color"
-                value={textColor}
-                onChange={(e) => handleSetColor(e.target.value)}
-              />
-            </div>
-            <div className="button-input-group">
-              <FormatColorFillIcon
-                style={{ color: backColor }}
-                onClick={() =>
-                  editor
-                    .chain()
-                    .focus()
-                    .toggleHighlight({ color: backColor })
-                    .run()
-                }
-              />
+      <div className="editor-container">
+        <div className="toolbar">
+          <div className="button-input-group">
+            <FormatColorTextOutlinedIcon style={{ color: textColor }} />
+            <input
+              type="color"
+              value={textColor}
+              onChange={(e) => handleSetColor(e.target.value)}
+            />
+          </div>
+          <div className="button-input-group">
+            <FormatColorFillIcon
+              style={{ color: backColor }}
+              onClick={() =>
+                editor
+                  .chain()
+                  .focus()
+                  .toggleHighlight({ color: backColor })
+                  .run()
+              }
+            />
 
-              <input
-                type="color"
-                onChange={(e) => handleSetColorBackGround(e.target.value)}
-                value={backColor}
-              />
-            </div>
-            <button
-              onClick={() => editor.chain().focus().toggleBold().run()}
-              disabled={!editor.can().toggleBold()}
-              className={editor.isActive("bold") ? "is-active" : ""}
-            >
-              <FormatBoldIcon />
-            </button>
-            <button
-              onClick={() => editor.chain().focus().toggleItalic().run()}
-              disabled={!editor.can().toggleItalic()}
-              className={editor.isActive("italic") ? "is-active" : ""}
-            >
-              <FormatItalicIcon />
-            </button>
-            <button
-              onClick={() => editor.chain().focus().toggleStrike().run()}
-              disabled={!editor.can().toggleStrike()}
-              className={editor.isActive("strike") ? "is-active" : ""}
-            >
-              <StrikethroughSIcon />
-            </button>
-            <button
-              onClick={() => editor.chain().focus().toggleUnderline().run()}
-              disabled={!editor.can().toggleUnderline()}
-              className={editor.isActive("underline") ? "is-active" : ""}
-            >
-              <FormatUnderlinedIcon />
-            </button>
-            <button
-              onClick={() => editor.chain().focus().toggleBulletList().run()}
-              className={editor.isActive("bulletList") ? "is-active" : ""}
-            >
-              <FormatListBulletedIcon />
-            </button>
-            <button
-              onClick={() => editor.chain().focus().toggleOrderedList().run()}
-              className={editor.isActive("orderedList") ? "is-active" : ""}
-            >
-              <FormatListNumberedIcon />
-            </button>
-            <select
+            <input
+              type="color"
+              onChange={(e) => handleSetColorBackGround(e.target.value)}
+              value={backColor}
+            />
+          </div>
+          <button
+            onClick={() => editor.chain().focus().toggleBold().run()}
+            disabled={!editor.can().toggleBold()}
+            className={editor.isActive("bold") ? "is-active" : ""}
+          >
+            <FormatBoldIcon />
+          </button>
+          <button
+            onClick={() => editor.chain().focus().toggleItalic().run()}
+            disabled={!editor.can().toggleItalic()}
+            className={editor.isActive("italic") ? "is-active" : ""}
+          >
+            <FormatItalicIcon />
+          </button>
+          <button
+            onClick={() => editor.chain().focus().toggleStrike().run()}
+            disabled={!editor.can().toggleStrike()}
+            className={editor.isActive("strike") ? "is-active" : ""}
+          >
+            <StrikethroughSIcon />
+          </button>
+          <button
+            onClick={() => editor.chain().focus().toggleUnderline().run()}
+            disabled={!editor.can().toggleUnderline()}
+            className={editor.isActive("underline") ? "is-active" : ""}
+          >
+            <FormatUnderlinedIcon />
+          </button>
+          <button
+            onClick={() => editor.chain().focus().toggleBulletList().run()}
+            className={editor.isActive("bulletList") ? "is-active" : ""}
+          >
+            <FormatListBulletedIcon />
+          </button>
+          <button
+            onClick={() => editor.chain().focus().toggleOrderedList().run()}
+            className={editor.isActive("orderedList") ? "is-active" : ""}
+          >
+            <FormatListNumberedIcon />
+          </button>
+          <select
+            onChange={(e) => {
+              const fontFamily = e.target.value;
+              editor.chain().focus().setFontFamily(fontFamily).run();
+            }}
+          >
+            <option value="">Font : normal</option>
+            <option value="Inter">Inter</option>
+            <option value="Comic Sans MS, Comic Sans">Comic Sans</option>
+            <option value="serif">Serif</option>
+            <option value="monospace">Monospace</option>
+            <option value="cursive">Cursive</option>
+            <option value='"Comic Sans MS", "Comic Sans"'>
+              Comic Sans quoted
+            </option>
+          </select>
+          {/* <select
+              value={editor.getAttributes("textStyle").textSize || ""}
               onChange={(e) => {
-                const fontFamily = e.target.value;
-                editor.chain().focus().setFontFamily(fontFamily).run();
+                const fontSize = e.target.value;
+                editor
+                  .chain()
+                  .focus()
+                  .setTextStyle({ fontSize: `${fontSize}px` })
+                  .run();
               }}
             >
-              <option value="">Font : normal</option>
-              <option value="Inter">Inter</option>
-              <option value="Comic Sans MS, Comic Sans">Comic Sans</option>
-              <option value="serif">Serif</option>
-              <option value="monospace">Monospace</option>
-              <option value="cursive">Cursive</option>
-              <option value='"Comic Sans MS", "Comic Sans"'>
-                Comic Sans quoted
-              </option>
-            </select>
-            <select
-    value={editor.fontSize}
-    onChange={(e) => {
-      const fontSize = e.target.value;
-      editor.chain().focus().setTextSize(fontSize).run();
-    }}
-  >
-    {Array.from({ length: 63 }, (_, i) => i + 10).map((size) => (
-      <option key={size} value={size}>
-        {size}px
-      </option>
-    ))}
-  </select>
-            <button
-              onClick={() => editor.chain().focus().undo().run()}
-              disabled={!editor.can().undo()}
-            >
-              <UndoIcon />
-            </button>
-            <button
-              onClick={() => editor.chain().focus().redo().run()}
-              disabled={!editor.can().redo()}
-            >
-              <RedoIcon />
-            </button>
+              {Array.from({ length: 63 }, (_, i) => i + 10).map((size) => (
+                <option key={size} value={size}>
+                  {size}
+                </option>
+              ))}
+            </select> */}
+          <button
+            onClick={() => editor.chain().focus().undo().run()}
+            disabled={!editor.can().undo()}
+          >
+            <UndoIcon />
+          </button>
+          <button
+            onClick={() => editor.chain().focus().redo().run()}
+            disabled={!editor.can().redo()}
+          >
+            <RedoIcon />
+          </button>
 
-            <button onClick={() => editor.chain().focus().setHardBreak().run()}>
-              <SubdirectoryArrowLeftIcon />
-            </button>
-            <button
-              onClick={() => editor.chain().focus().setHorizontalRule().run()}
-            >
-              {/* Set horizontal rule */}
-              <HorizontalRuleIcon />
-            </button>
-            <button onClick={addImage}>
-              <AddPhotoAlternateIcon />
-            </button>
-            <button
-              onClick={() => editor.chain().focus().toggleCode().run()}
-              className={editor.isActive("code") ? "is-active" : ""}
-            >
-              <CodeIcon />
-            </button>
-          </div>
-          <EditorContent
-            editor={editor}
-            className="custom-editor"
-            onKeyDown={handleKeyDown}
-            tabIndex={0}
-          />
+          <button onClick={() => editor.chain().focus().setHardBreak().run()}>
+            <SubdirectoryArrowLeftIcon />
+          </button>
+          <button
+            onClick={() => editor.chain().focus().setHorizontalRule().run()}
+          >
+            {/* Set horizontal rule */}
+            <HorizontalRuleIcon />
+          </button>
+          <button onClick={addImage}>
+            <AddPhotoAlternateIcon />
+          </button>
+          <button
+            onClick={() => editor.chain().focus().toggleCode().run()}
+            className={editor.isActive("code") ? "is-active" : ""}
+          >
+            <CodeIcon />
+          </button>
         </div>
-      )}
-
+        <EditorContent
+          editor={editor}
+          className="custom-editor"
+          onKeyDown={handleKeyDown}
+          tabIndex={0}
+        />
+      </div>
       <div className="word-frequency-container">
         <h3>Word Frequencies</h3>
         <ul className="word-list">
