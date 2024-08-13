@@ -1,10 +1,35 @@
 import React from "react";
 import { useAppContext } from "../../context";
 
+import PrintIcon from "@mui/icons-material/Print";
+import html2pdf from "html2pdf.js";
+
 const CustomModal = () => {
   const { modal, theme } = useAppContext();
 
   if (!modal.isModalOpen) return null;
+
+  const handlePrint = () => {
+    const content = document.getElementById("plag-window-print-data").innerHTML;
+
+    if (window.electron) {
+      // In Electron environment
+      window.electron.saveAsPDF(content);
+    } else {
+      // In web environment
+      const element = document.getElementById("plag-window-print-data");
+      const opt = {
+        margin: 1,
+        filename: "document.pdf",
+        image: { type: "jpeg", quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+      };
+
+      // New Promise-based usage:
+      html2pdf().from(element).set(opt).save();
+    }
+  };
 
   return (
     <div
@@ -29,6 +54,12 @@ const CustomModal = () => {
         </div>
         <div className="custom-modal-content">{modal.modalContent}</div>
         <div className="custom-modal-footer">
+          {modal.ctr === "print" && (
+            <button className="print" onClick={handlePrint}>
+              <PrintIcon /> Print
+            </button>
+          )}
+
           <button onClick={() => modal.setIsModelOpen(false)}>Close</button>
         </div>
       </div>

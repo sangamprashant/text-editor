@@ -33,6 +33,7 @@ const AppProvider = ({ children }) => {
   const [modalContent, setModelContent] = useState(null);
   const [modalTitle, setModalTitle] = useState("");
   const [modalWidth, setModalWidth] = useState(0);
+  const [ctr, setCtr] = useState("");
   const [plagResult, setPlagResult] = useState(null);
   const [plainTextContent, setPlainTextContent] = useState("");
   const [isDark, setIsDark] = useState(false);
@@ -112,6 +113,7 @@ const AppProvider = ({ children }) => {
           modalTitle,
           modalWidth,
           setIsModelOpen,
+          ctr,
         },
         plag: {
           plagResult,
@@ -131,16 +133,20 @@ const AppProvider = ({ children }) => {
     </AppContext.Provider>
   );
 
-  async function handleModel(width, title, data) {
+  async function handleModel(width, title, data, ctr) {
     if (width === 0) {
       setModalWidth(500);
     } else {
       setModalWidth(width);
     }
+
     if (!title) {
       setModalTitle("Text editor says!");
     } else {
       setModalTitle(title);
+    }
+    if (ctr) {
+      setCtr(ctr);
     }
     setModelContent(data);
     setIsModelOpen(true);

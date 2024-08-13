@@ -31,16 +31,20 @@ const WordFrequencies = ({ wordFrequencie }) => {
         </ul>
 
         {wordFrequencie.length === 0 && (
-          <div className="text-center mt-7  ">
+          <div className="text-center">
             <img
               src={`nodata-${theme.isDark ? "night" : "day"}.png`}
               alt=""
               width="100%"
+              style={{
+                margin:"40px 0 0 0",
+                maxWidth:"100px"
+              }}
             />
-            <h4 className="">
+            <h5 className="">
               <b>There are no items here!</b>
-            </h4>
-            <h6>Start typing your content</h6>
+            </h5>
+            <p>Start typing your content</p>
           </div>
         )}
       </ul>

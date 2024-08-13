@@ -3,7 +3,8 @@ import Editor from "./components/Editor";
 import { useAppContext } from "./context";
 import "./css/App.css";
 import "./css/MenuBar.css";
-import "./css/Modal.css"
+import "./css/Modal.css";
+import "./css/Plag.css";
 
 const App = () => {
   const { theme } = useAppContext();

@@ -32,7 +32,8 @@ const PlagResult = () => {
     modal.handleModel(
       1000,
       "Text editor says! - Plagiarism Report",
-      <PlagiarismWindow />
+      <PlagiarismWindow />,
+      "print"
     );
   }
 };
