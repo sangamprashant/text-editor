@@ -5,6 +5,7 @@ import "./css/App.css";
 import "./css/MenuBar.css";
 import "./css/Modal.css";
 import "./css/Plag.css";
+import "./css/Editor.css";
 
 const App = () => {
   const { theme } = useAppContext();

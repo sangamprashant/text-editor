@@ -6,21 +6,21 @@ function createWindow() {
   const mainWindow = new BrowserWindow({
     width: 1000,
     height: 700,
-    icon: path.join(__dirname, "logo.ico"),
+    icon: path.join(__dirname, "icon.ico"),
     title: "Text Editor",
     webPreferences: {
-      preload: path.join(__dirname, "preload.js"),
-      contextIsolation: true,
-      enableRemoteModule: false,
       nodeIntegration: false,
+      contextIsolation: true,
+      preload: path.join(__dirname, "preload.js"),
     },
   });
 
   // Remove menu options
   mainWindow.removeMenu();
-  // mainWindow.webContents.openDevTools();
+  mainWindow.webContents.openDevTools();
 
   mainWindow.loadURL("http://localhost:5173");
+  // mainWindow.loadFile(path.join(__dirname, "..","dist/index.html"));
 
   ipcMain.handle("save-file-dialog", async (event, content) => {
     const result = await dialog.showSaveDialog(mainWindow, {
@@ -128,4 +128,3 @@ app.on("activate", () => {
     createWindow();
   }
 });
-

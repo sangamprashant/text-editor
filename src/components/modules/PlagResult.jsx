@@ -3,7 +3,7 @@ import PlagiarismWindow from "./PlagiarismWindow";
 import { useAppContext } from "../../context";
 
 const PlagResult = () => {
-  const { modal, plag } = useAppContext();
+  const { modal, plag, theme } = useAppContext();
 
   if (!plag.plagResult) {
     return null;
@@ -15,7 +15,7 @@ const PlagResult = () => {
         <h4
           style={{
             fontWeight: "bold",
-            color: "#333",
+            color: theme.isDark ? "white" : "#333",
           }}
         >
           Plagiarism Report:{" "}

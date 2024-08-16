@@ -3,7 +3,6 @@ import nlp from "compromise";
 import "compromise-sentences";
 import React, { useCallback, useEffect, useState } from "react";
 import { useAppContext } from "../context";
-import "./Editor.css";
 import MenuBar from "./modules/MenuBar";
 import ModalComponent from "./modules/ModalComponent";
 import PlagResult from "./modules/PlagResult";
@@ -75,7 +74,7 @@ const Editor = () => {
 
   const handleKeyDown = useCallback(
     (event) => {
-      if (event.ctrlKey && event.key >= "1" && event.key <= "9") {
+      if (event.ctrlKey && event.key >= "1" && event.key <= "5") {
         const index = parseInt(event.key) - 1;
         if (index < wordFrequencies.length && editor) {
           const selectedWord = wordFrequencies[index].word;

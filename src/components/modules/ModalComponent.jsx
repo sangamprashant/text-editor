@@ -41,6 +41,8 @@ const CustomModal = () => {
         onClick={(e) => e.stopPropagation()}
         style={{
           maxWidth: `${modal.modalWidth != 0 ? modal.modalWidth : 500}px`,
+          maxHeight: "80vh",
+          overflowY: "auto",
         }}
       >
         <div className="custom-modal-header">
@@ -56,7 +58,7 @@ const CustomModal = () => {
         <div className="custom-modal-footer">
           {modal.ctr === "print" && (
             <button className="print" onClick={handlePrint}>
-              <PrintIcon /> Print
+              Print
             </button>
           )}
 
