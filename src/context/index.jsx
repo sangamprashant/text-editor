@@ -1,6 +1,7 @@
 import Code from "@tiptap/extension-code";
 import Color from "@tiptap/extension-color";
 import Document from "@tiptap/extension-document";
+// import Dropcursor from "@tiptap/extension-dropcursor";
 import Focus from "@tiptap/extension-focus";
 import FontFamily from "@tiptap/extension-font-family";
 import HardBreak from "@tiptap/extension-hard-break";
