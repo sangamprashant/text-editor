@@ -17,9 +17,10 @@ function createWindow() {
 
   // Remove menu options
   mainWindow.removeMenu();
-  mainWindow.webContents.openDevTools();
+  // mainWindow.webContents.openDevTools();
 
   mainWindow.loadURL("http://localhost:5173");
+  // while build
   // mainWindow.loadFile(path.join(__dirname, "..","dist/index.html"));
 
   ipcMain.handle("save-file-dialog", async (event, content) => {

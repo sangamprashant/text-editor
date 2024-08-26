@@ -8,15 +8,10 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "electron":"electron .",
-    "start": "electron-forge start",
-    "prebuild": "electron-forge import",
-    "package": "electron-forge package",
-    "make": "electron-forge make",
-    "lint": "eslint ."
+    "electron": "electron .",
+    "dev:run": "concurrently \"npm run dev\" \"npm run electron\""
   },
   "dependencies": {
-    "7zip-bin": "^5.2.0",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@mui/icons-material": "^5.16.0",
@@ -51,6 +46,7 @@
     "@tiptap/extension-underline": "^2.4.0",
     "@tiptap/react": "^2.4.0",
     "@tiptap/starter-kit": "^2.4.0",
+    "7zip-bin": "^5.2.0",
     "antd": "^5.19.3",
     "axios": "^1.7.2",
     "compromise": "^14.14.0",
@@ -79,6 +75,7 @@
     "babel-plugin-transform-async-to-generator": "^6.24.1",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
+    "concurrently": "^8.2.2",
     "electron": "31.4.0",
     "electron-prebuilt-compile": "8.2.0",
     "electron-vite": "^2.3.0",
@@ -88,61 +85,5 @@
     "eslint-plugin-react-refresh": "^0.4.5",
     "tailwindcss": "^3.4.4",
     "vite": "^5.1.0"
-  },
-  "config": {
-    "forge": {
-      "packagerConfig": {},
-      "makers": [
-        {
-          "name": "@electron-forge/maker-deb",
-          "config": {},
-          "platforms": [
-            "linux"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-rpm",
-          "config": {},
-          "platforms": [
-            "linux"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-squirrel",
-          "config": {
-            "name": "text_editor"
-          },
-          "platforms": [
-            "win32"
-          ]
-        },
-        {
-          "name": "@electron-forge/maker-appx",
-          "config": {
-            "packageName": "",
-            "name": "texteditor"
-          },
-          "platforms": []
-        },
-        {
-          "name": "@electron-forge/maker-zip",
-          "platforms": [
-            "darwin"
-          ]
-        }
-      ],
-      "publishers": [
-        {
-          "config": {
-            "repository": {
-              "name": "",
-              "owner": ""
-            }
-          },
-          "name": "@electron-forge/publisher-github",
-          "platforms": null
-        }
-      ]
-    }
   }
 }

@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
-import "./main.css";
+import "./css/main.css";
 
 const Loading = () => (
   <div className="loading-container-">

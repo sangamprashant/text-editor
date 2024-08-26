@@ -147,6 +147,8 @@ const AppProvider = ({ children }) => {
     }
     if (ctr) {
       setCtr(ctr);
+    } else {
+      setCtr("");
     }
     setModelContent(data);
     setIsModelOpen(true);
